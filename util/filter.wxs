@@ -1,0 +1,45 @@
+//wxs 语法类似于js 可以编写过滤器
+
+//不能用const  const 为js Es6语法
+// const format = function(text){
+
+//part1. \n过滤器
+var format = function (text) {
+    //将 \\n  转为 \n
+    //使用Wxs 参考文档正则表达式
+    //console.log(text) 可见 text输出两次 format也执行两次
+    //解析： 数据有两次变化 1.初始化 2.数据更新
+    //error! format执行两次
+    if (!text) {
+        return ;
+    }
+    var reg = getRegExp('\\\\n', 'g');
+    return text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;'); //将\\n 转为 \n
+}
+
+
+var limit = function (array, length) {
+    if (!array)
+        return ;
+
+    return array.slice(0, length); //截取前length-1个
+}
+
+
+var highlight = function (index) {
+    if (index == 0) {
+        return 'ex-tag1';
+    }
+    if (index == 1) {
+        return 'ex-tag2';
+    }
+    return '';
+}
+
+
+
+module.exports = {
+    format: format,
+    limit: limit,
+    highlight:highlight
+};
