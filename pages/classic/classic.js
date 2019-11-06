@@ -26,7 +26,6 @@ Page({
     latest: true,
     likeStatus: false,
     likeCount: 0
-
   },
 
   /**
